@@ -1,0 +1,420 @@
+[09:17:14] (master) week-1-group-review-nyc-web-060319
+// ♥ ruby review-question-1.rb
+Traceback (most recent call last):
+        1: from review-question-1.rb:2:in `<main>'
+/Users/flatironschool/.rvm/rubies/ruby-2.6.1/lib/ruby/site_ruby/2.6.0/rubygems/core_ext/kernel_require.rb:34:in `require': wrong number of arguments (given 0, expected 1) (ArgumentError)
+[09:17:23] (master) week-1-group-review-nyc-web-060319
+// ♥ ruby review-question-1.rb
+
+From: /Users/flatironschool/Documents/GitHub/week-1-group-review-nyc-web-060319/review-question-1.rb @ line 64 :
+
+    59:       }
+    60:   ]
+    61: }
+    62: ]
+    63: 
+ => 64: binding.pry
+    65: pokemon[0]["abilities"][0]
+    66: # How would you get the url for Bulbasaur's ability?
+    67: # How would you return the first pokemon with base experience over 40?
+    68: # How would you return ALL OF THE pokemon with base experience over 40? (Gotta catch em all)
+    69: # How would you return an array of all of the pokemon's names?
+
+[1] pry(main)> pokemon["abilities
+[1] pry(main)* pokemon["abilities]
+SyntaxError: unexpected tIDENTIFIER, expecting ']'
+pokemon["abilities]
+         ^~~~~~~~~
+[1] pry(main)> pokemon["abilities"]
+TypeError: no implicit conversion of String into Integer
+from (pry):1:in `[]'
+[2] pry(main)> pokemon["0".to_s]
+TypeError: no implicit conversion of String into Integer
+from (pry):2:in `<main>'
+[3] pry(main)> pokemon["0".to_i]
+=> {:id=>1,
+ :name=>"bulbasaur",
+ :base_experience=>64,
+ :height=>7,
+ :is_default=>true,
+ :order=>1,
+ :weight=>69,
+ :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]}
+[4] pry(main)> pokemon.class
+=> Array
+[5] pry(main)> pokemon[0]
+=> {:id=>1,
+ :name=>"bulbasaur",
+ :base_experience=>64,
+ :height=>7,
+ :is_default=>true,
+ :order=>1,
+ :weight=>69,
+ :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]}
+[6] pry(main)> pokemon[0]["abilities].class
+[6] pry(main)* pokemon[0]["abilities"].class
+[6] pry(main)* pokemon[0]["abilities"].class
+SyntaxError: unexpected tIDENTIFIER, expecting end-of-input
+pokemon[0]["abilities"].class
+            ^~~~~~~~~
+[6] pry(main)> pokemon[0]["abilities"].class
+=> NilClass
+[7] pry(main)> pokemon[0]["abilities"].class
+=> NilClass
+[8] pry(main)> pokemon[0]["abilities"]
+=> nil
+[9] pry(main)> pokemon[0][:abilities]
+=> [{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]
+[10] pry(main)> exit-application
+[09:20:43] (master) week-1-group-review-nyc-web-060319
+// ♥ ruby review-question-1.rb
+
+From: /Users/flatironschool/Documents/GitHub/week-1-group-review-nyc-web-060319/review-question-1.rb @ line 64 :
+
+    59:       }
+    60:   ]
+    61: }
+    62: ]
+    63: 
+ => 64: binding.pry
+    65: pokemon[0]["abilities"][0]
+    66: # How would you get the url for Bulbasaur's ability?
+    67: # How would you return the first pokemon with base experience over 40?
+    68: # How would you return ALL OF THE pokemon with base experience over 40? (Gotta catch em all)
+    69: # How would you return an array of all of the pokemon's names?
+
+[1] pry(main)> pokemon[0][:abilities]
+=> nil
+[2] pry(main)> pokemon[0]["abilities"]
+=> [{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]
+[3] pry(main)> exit-application
+[09:20:58] (master) week-1-group-review-nyc-web-060319
+// ♥ ruby review-question-1.rb
+
+From: /Users/flatironschool/Documents/GitHub/week-1-group-review-nyc-web-060319/review-question-1.rb @ line 64 :
+
+    59:       }
+    60:   ]
+    61: }
+    62: ]
+    63: 
+ => 64: binding.pry
+    65: pokemon[0]["abilities"][0]
+    66: # How would you get the url for Bulbasaur's ability?
+    67: # How would you return the first pokemon with base experience over 40?
+    68: # How would you return ALL OF THE pokemon with base experience over 40? (Gotta catch em all)
+    69: # How would you return an array of all of the pokemon's names?
+
+[1] pry(main)> pokemon[0]["abilities"][0].class
+NoMethodError: undefined method `[]' for nil:NilClass
+from (pry):1:in `<main>'
+[2] pry(main)> pokemon[0][:abilities].class
+=> Array
+[3] pry(main)> pokemon[0][:abilities][0].class
+=> Hash
+[4] pry(main)> pokemon[0][:abilities][0][:ability]
+=> {:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}
+[5] pry(main)> pokemon[0][:abilities][0][:ability][:url]
+=> "http://pokeapi.co/api/v2/ability/34/"
+[6] pry(main)> pokemon[0][:abilities][0][:ability][:url].gsub("http://", "https://")
+=> "https://pokeapi.co/api/v2/ability/34/"
+[7] pry(main)> pokemon.all
+NoMethodError: undefined method `all' for #<Array:0x00007fc0eb9333a8>
+Did you mean?  all?
+from (pry):7:in `<main>'
+[8] pry(main)> pokemon.all?
+=> true
+[9] pry(main)> pokemon.map do |pokemon|
+[9] pry(main)*   pokemon[:base_experience] > 40
+[9] pry(main)* end  
+=> [true, true, true]
+[10] pry(main)> pokemon.map do |pokemon|
+[10] pry(main)*   pokemon[:base_experience] > 40  
+[10] pry(main)*     pokemon[:base_experience] > 40
+[10] pry(main)> pokemon.map do |pokemon|
+[10] pry(main)*   return pokemon[:name] if pokemon[:base_experience] > 40
+[10] pry(main)* end  
+LocalJumpError: unexpected return
+from (pry):13:in `block in <main>'
+[11] pry(main)> pokemon.map do |pokemon|
+[11] pry(main)*   if pokemon[:base_experience] > 40  
+[11] pry(main)*     return pokemon[:name]
+[11] pry(main)*   end  
+[11] pry(main)* end  
+LocalJumpError: unexpected return
+from (pry):17:in `block in <main>'
+[12] pry(main)> pokemon.map do |pokemon|
+[12] pry(main)*   if pokemon[:base_experience] > 40  
+[12] pry(main)*     pokemon[:name]    
+[12] pry(main)*   end  
+[12] pry(main)* end  
+=> ["bulbasaur", "venesaur", "pikachu"]
+[13] pry(main)> pokemon.select do |pokemon|
+[13] pry(main)*   if pokemon[:base_experience] > 40  
+[13] pry(main)*     pokemon[:name]    
+[13] pry(main)*   end  
+[13] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+[14] pry(main)> pokemon.select do |pokemon|
+[14] pry(main)*   if pokemon[:base_experience] > 40  
+[14] pry(main)*     :name
+[14] pry(main)*   end  
+[14] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+[15] pry(main)> pokemon.find do |pokemon|
+[15] pry(main)*   if pokemon[:base_experience] > 40  
+[15] pry(main)*     pokemon[:name]    
+[15] pry(main)*   end  
+[15] pry(main)* end  
+=> {:id=>1,
+ :name=>"bulbasaur",
+ :base_experience=>64,
+ :height=>7,
+ :is_default=>true,
+ :order=>1,
+ :weight=>69,
+ :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]}
+[16] pry(main)> pokemon.find do |pokemon|
+[16] pry(main)*   if pokemon[:base_experience] > 40  
+[16] pry(main)*     pokemon[:name]    
+[16] pry(main)*   end  
+[16] pry(main)* end[:name]  
+=> "bulbasaur"
+[17] pry(main)> Array.find_all
+NoMethodError: undefined method `find_all' for Array:Class
+from (pry):45:in `<main>'
+[18] pry(main)> name = pokemon.find do |pokemon|
+[18] pry(main)*   if pokemon[:base_experience] > 40  
+[18] pry(main)*     pokemon[:name]    
+[18] pry(main)*   end  
+[18] pry(main)* end  
+=> {:id=>1,
+ :name=>"bulbasaur",
+ :base_experience=>64,
+ :height=>7,
+ :is_default=>true,
+ :order=>1,
+ :weight=>69,
+ :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]}
+[19] pry(main)> name[:name]
+=> "bulbasaur"
+[20] pry(main)> pokemon.select do |pokemon|
+[20] pry(main)*   pokemon[:name]
+[20] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+[21] pry(main)> pokemon.map do |pokemon|
+[21] pry(main)*   pokemon[:name]
+[21] pry(main)* end  
+=> ["bulbasaur", "venesaur", "pikachu"]
+[22] pry(main)> pokemon.map do |pokemon|
+[22] pry(main)*   pokemon
+[22] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+[23] pry(main)> poke
+NameError: undefined local variable or method `poke' for main:Object
+Did you mean?  pokemon
+from (pry):61:in `<main>'
+[24] pry(main)> pokemon
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+[25] pry(main)> pokemon.map do |pokemon|
+[25] pry(main)*   if pokemon[:base_experience] > 40  
+[25] pry(main)*     pokemon
+[25] pry(main)*   end  
+[25] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+  :name=>"pikachu",
+  :base_experience=>60,
+  :height=>4,
+  :is_default=>true,
+  :order=>1,
+  :weight=>37,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"lightning", :url=>"http://pokeapi.co/api/v2/ability/30/"}}]}]
+[26] pry(main)> pokemon.map do |pokemon|
+[26] pry(main)*   if pokemon[:weight[
+[26] pry(main)*         
+[26] pry(main)> 
+[26] pry(main)> pokemon.map do |pokemon|
+[26] pry(main)*   if pokemon[:weight]  
+[26] pry(main)*     pokemon
+[26] pry(main)*   end  
+[26] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ {:id=>2,
+  :name=>"pikachu",
+  :base_experience=>60,
+  :height=>4,
+  :is_default=>true,
+  :order=>1,
+  :weight=>37,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"lightning", :url=>"http://pokeapi.co/api/v2/ability/30/"}}]}]
+[27] pry(main)> pokemon.map do |pokemon|
+[27] pry(main)*   if pokemon[:weight] > 60  
+[27] pry(main)*   end  
+[27] pry(main)* end  
+=> [nil, nil, nil]
+[28] pry(main)> pokemon.map do |pokemon|
+[28] pry(main)*   if pokemon[:weight] > 60  
+[28] pry(main)*     pokemon
+[28] pry(main)*   end  
+[28] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ nil]
+[29] pry(main)> pokemon.map do |pokemon|
+[29] pry(main)*   if pokemon[:weight] > 60  
+[29] pry(main)*     pokemon    
+[29] pry(main)*   end  
+[29] pry(main)* end.length > 0  
+=> true
+[30] pry(main)> pokemon.any? {|pokemon| pokemon[:weight]}
+=> true
+[31] pry(main)> fat_pokemon = pokemon.map do |pokemon|
+[31] pry(main)*   if pokemon[:weight] > 60  
+[31] pry(main)*     pokemon    
+[31] pry(main)*   end  
+[31] pry(main)* end  
+=> [{:id=>1,
+  :name=>"bulbasaur",
+  :base_experience=>64,
+  :height=>7,
+  :is_default=>true,
+  :order=>1,
+  :weight=>69,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"chlorophyll", :url=>"http://pokeapi.co/api/v2/ability/34/"}}]},
+ {:id=>3,
+  :name=>"venesaur",
+  :base_experience=>50,
+  :height=>10,
+  :is_default=>true,
+  :order=>1,
+  :weight=>90,
+  :abilities=>[{:is_hidden=>true, :slot=>3, :ability=>{:name=>"fire", :url=>"http://pokeapi.co/api/v2/ability/38/"}}]},
+ nil]
+[32] pry(main)> fat_pokemon.length > 0
+=> true
+[33] pry(main)> 
